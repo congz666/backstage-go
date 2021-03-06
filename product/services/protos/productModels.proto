@@ -1,0 +1,42 @@
+syntax="proto3";
+package services;
+
+message ProductModel{
+  // @inject_tag: json:"id"
+  uint32 ID=1;
+  // @inject_tag: json:"name"
+	string Name=2;
+	// @inject_tag: json:"category_id"
+	uint32 CategoryID=3;
+	// @inject_tag: json:"title"
+	string Title=4;
+	// @inject_tag: json:"info"
+	string Info=5;
+	// @inject_tag: json:"img_path"
+	string ImgPath=6;
+	// @inject_tag: json:"price"
+	string Price=7;
+	// @inject_tag: json:"discount_price"
+	string DiscountPrice=8;
+	// @inject_tag: json:"created_at"
+	int64 CreatedAt=9;
+	// @inject_tag: json:"updated_at"
+	int64 UpdatedAt=10;
+	// @inject_tag: json:"deleted_at"
+	int64 DeletedAt=11;
+}
+
+message ProductImgModel{
+  // @inject_tag: json:"id"
+  uint32 ID=1;
+  // @inject_tag: json:"product_id"
+	uint32 ProductID=2;
+	// @inject_tag: json:"img_path"
+	string ImgPath=3;
+	// @inject_tag: json:"created_at"
+	int64 CreatedAt=9;
+	// @inject_tag: json:"updated_at"
+	int64 UpdatedAt=10;
+	// @inject_tag: json:"deleted_at"
+	int64 DeletedAt=11;
+}

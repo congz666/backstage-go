@@ -1,0 +1,42 @@
+syntax="proto3";
+package services;
+
+message AdminModel{
+  // @inject_tag: json:"id"
+  uint32 ID=1;
+  // @inject_tag: json:"user_name"
+	string UserName=2;
+	// @inject_tag: json:"avatar"
+	string Avatar=3;
+	// @inject_tag: json:"created_at"
+	int64 CreatedAt=4;
+	// @inject_tag: json:"updated_at"
+	int64 UpdatedAt=5;
+	// @inject_tag: json:"deleted_at"
+	int64 DeletedAt=6;
+}
+
+message UserModel{
+  // @inject_tag: json:"id"
+  uint32 ID=1;
+  // @inject_tag: json:"user_name"
+	string UserName=2;
+	// @inject_tag: json:"avatar"
+	string Avatar=3;
+	// @inject_tag: json:"email"
+	string Email=4;
+	// @inject_tag: json:"nickname"
+	string NickName=5;
+	// @inject_tag: json:"status"
+	string Status=6;	
+	// @inject_tag: json:"limit"
+	uint32 Limit=7;			
+	// @inject_tag: json:"created_at"
+	int64 CreatedAt=8;
+	// @inject_tag: json:"updated_at"
+	int64 UpdatedAt=9;
+	// @inject_tag: json:"deleted_at"
+	int64 DeletedAt=10;
+}
+
+

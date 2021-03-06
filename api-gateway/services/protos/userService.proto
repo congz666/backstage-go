@@ -1,0 +1,48 @@
+syntax="proto3";
+package services;
+import "userModels.proto";
+
+message AdminRequest{
+  // @inject_tag: json:"user_name" form:"user_name" uri:"user_name"
+  string UserName=1;
+  // @inject_tag: json:"password" form:"password" uri:"password"
+  string Password=2;
+  // @inject_tag: json:"password_confirm" form:"password_confirm" uri:"password_confirm"
+  string PasswordConfirm=3;
+  // @inject_tag: json:"identification" form:"identification" uri:"identification"
+  string Identification=4;
+  // @inject_tag: json:"challenge" form:"challenge" uri:"challenge"
+  string Challenge=5;  
+  // @inject_tag: json:"validate" form:"validate" uri:"validate" 
+  string Validate=6;   
+  // @inject_tag: json:"seccode" form:"seccode" uri:"seccode"
+	string Seccode=7;
+}
+message AdminDetailResponse{
+  AdminModel AdminDetail=1;
+  uint32 Code=2;
+}
+
+message UserRequest{
+  // @inject_tag: json:"user_id" form:"user_id" uri:"user_id"
+  uint32 UserID=1;
+  // @inject_tag: json:"start" form:"start" uri:"start"
+  uint32 start=2;
+  // @inject_tag: json:"limit" form:"limit" uri:"limit"
+  uint32 limit=3;
+}
+message UsersListResponse{
+  repeated UserModel UsersList=1;
+  // @inject_tag: json:"count" 
+  uint32 Count=2;
+}
+message UserDetailResponse{
+  UserModel UserDetail=1;
+}
+
+service UserService{
+  rpc AdminLogin(AdminRequest) returns(AdminDetailResponse);
+  rpc AdminRegister(AdminRequest) returns(AdminDetailResponse);
+  rpc GetUsersList(UserRequest) returns(UsersListResponse);
+  rpc GetUser(UserRequest) returns(UserDetailResponse);
+}

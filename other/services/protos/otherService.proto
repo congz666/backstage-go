@@ -1,0 +1,75 @@
+syntax="proto3";
+package services;
+import "otherModels.proto";
+
+message CarouselRequest{
+  // @inject_tag: json:"start" form:"start" uri:"start"
+  uint32 start=1;
+  // @inject_tag: json:"limit" form:"limit" uri:"limit"
+  uint32 limit=2;
+  // @inject_tag: json:"carousel_id" form:"carousel_id" uri:"carousel_id"
+  uint32 CarouselID=3;
+  // @inject_tag: json:"img_path" form:"img_path" uri:"img_path"
+  string ImgPath=4;
+  // @inject_tag: json:"product_id" form:"product_id" uri:"product_id"
+  uint32 ProductID=5;
+}
+message CarouselsListResponse{
+  repeated CarouselModel CarouselsList=1;
+  // @inject_tag: json:"count" 
+  uint32 Count=2;
+}
+message CarouselDetailResponse{
+  CarouselModel CarouselDetail=1;
+}
+
+message NoticeRequest{
+  // @inject_tag: json:"notice_id" form:"notice_id" uri:"notice_id"
+  uint32 NoticeID=1;
+  // @inject_tag: json:"text" form:"text" uri:"text"
+  string Text=2;  
+}
+message NoticeDetailResponse{
+  NoticeModel NoticeDetail=1;
+}
+
+message CategoryRequest{
+  // @inject_tag: json:"start" form:"start" uri:"start"
+  uint32 start=1;
+  // @inject_tag: json:"limit" form:"limit" uri:"limit"
+  uint32 limit=2;
+  // @inject_tag: json:"id" form:"id" uri:"id"
+  uint32 ID=3;
+  // @inject_tag: json:"category_id" form:"category_id" uri:"category_id"
+	uint32 CategoryID=4;
+	// @inject_tag: json:"category_name" form:"category_name" uri:"category_name"
+	string CategoryName=5;
+	// @inject_tag: json:"num" form:"num" uri:"num"
+	uint32 Num=6;
+}
+message CategoriesListResponse{
+  repeated CategoryModel CategoriesList=1;
+  // @inject_tag: json:"count" 
+  uint32 Count=2;
+}
+message CategoryDetailResponse{
+  CategoryModel CategoryDetail=1;
+}
+
+service OtherService{
+  //轮播图服务
+  rpc GetCarouselsList(CarouselRequest) returns(CarouselsListResponse);
+  rpc GetCarousel(CarouselRequest) returns(CarouselDetailResponse);
+  rpc UpdateCarousel(CarouselRequest) returns(CarouselDetailResponse);
+  //公告服务
+  rpc CreateNotice(NoticeRequest) returns(NoticeDetailResponse);
+  rpc GetNotice(NoticeRequest) returns(NoticeDetailResponse);
+  rpc UpdateNotice(NoticeRequest) returns(NoticeDetailResponse);
+  rpc DeleteNotice(NoticeRequest) returns(NoticeDetailResponse);
+  //分类服务
+  rpc CreateCategory(CategoryRequest) returns(CategoryDetailResponse);
+  rpc GetCategoriesList(CategoryRequest) returns(CategoriesListResponse);
+  rpc GetCategory(CategoryRequest) returns(CategoryDetailResponse);
+  rpc UpdateCategory(CategoryRequest) returns(CategoryDetailResponse);
+  rpc DeleteCategory(CategoryRequest) returns(CategoryDetailResponse);
+}
